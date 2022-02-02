@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 const count = ref(0);
 const title = "this is title";
@@ -13,6 +13,10 @@ const reverse = () => {
 setInterval(() => {
   count.value++;
 }, 1000);
+
+onMounted(() => {
+  console.log("마운트됨");
+});
 </script>
 
 <template>
