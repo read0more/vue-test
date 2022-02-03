@@ -4,6 +4,7 @@
 import HelloWorld from "./components/HelloWorld.vue";
 import Introduction from "./components/Introduction.vue";
 import TemplateSyntax from "./components/TemplateSyntax.vue";
+import ComputedAndWatch from "./components/ComputedAndWatch.vue";
 
 import { ref } from "vue";
 const activeComponent = ref('HelloWorld');
@@ -18,10 +19,12 @@ function changeActiveComponent(event) {
     <button v-on:click="changeActiveComponent">HelloWorld</button>
     <button v-on:click="changeActiveComponent">Introduction</button>
     <button v-on:click="changeActiveComponent">TemplateSyntax</button>
+    <button v-on:click="changeActiveComponent">ComputedAndWatch</button>
   </div>
   <HelloWorld v-if="activeComponent === 'HelloWorld'" msg="Hello Vue 3 + Vite" />
   <Introduction v-if="activeComponent === 'Introduction'" />
   <TemplateSyntax v-if="activeComponent === 'TemplateSyntax'" />
+  <ComputedAndWatch v-if="activeComponent === 'ComputedAndWatch'" />
 </template>
 
 <style>
