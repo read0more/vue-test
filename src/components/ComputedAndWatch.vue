@@ -1,18 +1,23 @@
 <script setup>
-import { ref, computed, watch } from "vue";
+import { ref, computed, watch, onUnmounted } from "vue";
 const firstName = ref('');
 const lastName = ref('');
 const watchQuestion = ref('');
 const answer = ref([]);
+let id;
 
 function debounce(callback, time) {
-  let id;
-
   return (args) => {
     clearTimeout(id);
     id = setTimeout(() => callback(...args), time);
+    console.log('new id:' + id);
   }
 }
+
+onUnmounted(() => {
+  console.log('unMounted 했으므로 API호출 취소:' + id);
+  clearTimeout(id);
+})
 
 /*
 getter로만 쓰고 싶다면...
@@ -28,10 +33,11 @@ const fullName = computed({
 });
 
 watch(watchQuestion, debounce((newVal, oldVal) => {
- fetch(`https://swapi.dev/api/people/?search=${newVal}`).then((r) => r.json()).then(j => {
-   answer.value = j.results;
+  if(!newVal) return;
+ fetch(`https://swapi.dev/api/people/?search=${newVal}`).then((res) => res.json()).then(json => {
+   answer.value = json.results;
  })
-}, 600));
+}, 2000));
 </script>
 
 <template>
