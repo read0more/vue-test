@@ -7,6 +7,7 @@ import TemplateSyntax from "./components/TemplateSyntax.vue";
 import ComputedAndWatch from "./components/ComputedAndWatch.vue";
 import StyleClass from "./components/StyleClass.vue";
 import IfAndShow from "./components/IfAndShow.vue";
+import ListRendering from "./components/ListRendering.vue";
 
 import { ref } from "vue";
 const activeComponent = ref('HelloWorld');
@@ -24,6 +25,7 @@ function changeActiveComponent(event) {
     <button v-on:click="changeActiveComponent">ComputedAndWatch</button>
     <button v-on:click="changeActiveComponent">StyleClass</button>
     <button v-on:click="changeActiveComponent">IfAndShow</button>
+    <button v-on:click="changeActiveComponent">ListRendering</button>
   </div>
   <HelloWorld v-if="activeComponent === 'HelloWorld'" msg="Hello Vue 3 + Vite" />
   <Introduction v-if="activeComponent === 'Introduction'" />
@@ -31,6 +33,7 @@ function changeActiveComponent(event) {
   <ComputedAndWatch v-if="activeComponent === 'ComputedAndWatch'" />
   <StyleClass v-if="activeComponent === 'StyleClass'" />
   <IfAndShow v-if="activeComponent === 'IfAndShow'" />
+  <ListRendering v-if="activeComponent === 'ListRendering'" />
 </template>
 
 <style>
