@@ -3,12 +3,25 @@
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import HelloWorld from "./components/HelloWorld.vue";
 import Introduction from "./components/Introduction.vue";
+import TemplateSyntax from "./components/TemplateSyntax.vue";
+
+import { ref } from "vue";
+const activeComponent = ref('HelloWorld');
+function changeActiveComponent(event) {
+  activeComponent.value = event.target.textContent;
+}
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
-  <Introduction />
+  <div>
+    <button v-on:click="changeActiveComponent">HelloWorld</button>
+    <button v-on:click="changeActiveComponent">Introduction</button>
+    <button v-on:click="changeActiveComponent">TemplateSyntax</button>
+  </div>
+  <HelloWorld v-if="activeComponent === 'HelloWorld'" msg="Hello Vue 3 + Vite" />
+  <Introduction v-if="activeComponent === 'Introduction'" />
+  <TemplateSyntax v-if="activeComponent === 'TemplateSyntax'" />
 </template>
 
 <style>
