@@ -9,6 +9,7 @@ import StyleClass from "./components/StyleClass.vue";
 import IfAndShow from "./components/IfAndShow.vue";
 import ListRendering from "./components/ListRendering.vue";
 import Event from "./components/Event.vue";
+import FormInputBinding from "./components/FormInputBinding.vue"
 
 import { ref } from "vue";
 const activeComponent = ref('HelloWorld');
@@ -28,6 +29,7 @@ function changeActiveComponent(event) {
     <button v-on:click="changeActiveComponent">IfAndShow</button>
     <button v-on:click="changeActiveComponent">ListRendering</button>
     <button v-on:click="changeActiveComponent">Event</button>
+    <button v-on:click="changeActiveComponent">FormInputBinding</button>
   </div>
   <HelloWorld v-if="activeComponent === 'HelloWorld'" msg="Hello Vue 3 + Vite" />
   <Introduction v-if="activeComponent === 'Introduction'" />
@@ -37,6 +39,7 @@ function changeActiveComponent(event) {
   <IfAndShow v-if="activeComponent === 'IfAndShow'" />
   <ListRendering v-if="activeComponent === 'ListRendering'" />
   <Event v-if="activeComponent === 'Event'" />
+  <FormInputBinding v-if="activeComponent === 'FormInputBinding'" />
 </template>
 
 <style>
