@@ -1,7 +1,7 @@
 <script setup>
-const emit = defineEmits(['custom']);
+const emit = defineEmits(['custom-event']);
 function input({ target: { value: text } }) {
-  emit('custom', text)
+  emit('custom-event', text)
 }
 </script>
 
