@@ -20,7 +20,7 @@ const input4 = ref('');
   <p>{{ input1 }}</p>
   기본 이벤트객체 이용 <input :value="input2" @input="input2 = $event.target.value">
   <p>{{ input2 }}</p>
-  컴포넌트에 modelValue 이용하여 v-model 적용되게 <custom-vmodel v-model="input3"></custom-vmodel>
+  컴포넌트에 modelValue 이용하여 v-model 적용되게 <custom-vmodel v-model.name="input3"></custom-vmodel>
   <p>{{ input3 }}</p>
   컴포넌트에 computed 이용하여 v-model 적용되게<br />(이것만 IME 반영이 제대로 되지 않음) <custom-vmodel2 v-model="input4"></custom-vmodel2>
   <p>{{ input4 }}</p>
