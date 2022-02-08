@@ -10,12 +10,14 @@ import IfAndShow from "./components/IfAndShow.vue";
 import ListRendering from "./components/ListRendering.vue";
 import Event from "./components/Event.vue";
 import FormInputBinding from "./components/FormInputBinding.vue"
+import ComponentsBasics from "./components/ComponentsBasics.vue"
+import { shallowRef, defineComponent } from "vue";
 
-import { ref } from "vue";
-const activeComponent = ref('HelloWorld');
+const activeComponent = shallowRef(HelloWorld);
 function changeActiveComponent(event) {
-  activeComponent.value = event.target.textContent;
+  activeComponent.value = eval(event.target.textContent);
 }
+
 </script>
 
 <template>
@@ -30,16 +32,9 @@ function changeActiveComponent(event) {
     <button v-on:click="changeActiveComponent">ListRendering</button>
     <button v-on:click="changeActiveComponent">Event</button>
     <button v-on:click="changeActiveComponent">FormInputBinding</button>
+    <button v-on:click="changeActiveComponent">ComponentsBasics</button>
   </div>
-  <HelloWorld v-if="activeComponent === 'HelloWorld'" msg="Hello Vue 3 + Vite" />
-  <Introduction v-if="activeComponent === 'Introduction'" />
-  <TemplateSyntax v-if="activeComponent === 'TemplateSyntax'" />
-  <ComputedAndWatch v-if="activeComponent === 'ComputedAndWatch'" />
-  <StyleClass v-if="activeComponent === 'StyleClass'" />
-  <IfAndShow v-if="activeComponent === 'IfAndShow'" />
-  <ListRendering v-if="activeComponent === 'ListRendering'" />
-  <Event v-if="activeComponent === 'Event'" />
-  <FormInputBinding v-if="activeComponent === 'FormInputBinding'" />
+  <component v-bind:is="activeComponent"></component>
 </template>
 
 <style>
