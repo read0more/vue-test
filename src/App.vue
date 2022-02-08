@@ -11,6 +11,7 @@ import ListRendering from "./components/ListRendering.vue";
 import Event from "./components/Event.vue";
 import FormInputBinding from "./components/FormInputBinding.vue"
 import ComponentsBasics from "./components/ComponentsBasics.vue"
+import ComponentsInDepth from "./components/ComponentsInDepth.vue"
 import { shallowRef, defineComponent } from "vue";
 
 const activeComponent = shallowRef(HelloWorld);
@@ -33,6 +34,9 @@ function changeActiveComponent(event) {
     <button v-on:click="changeActiveComponent">Event</button>
     <button v-on:click="changeActiveComponent">FormInputBinding</button>
     <button v-on:click="changeActiveComponent">ComponentsBasics</button>
+  </div>
+  <div>
+    <button v-on:click="changeActiveComponent">ComponentsInDepth</button>
   </div>
   <component v-bind:is="activeComponent"></component>
 </template>
