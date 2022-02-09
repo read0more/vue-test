@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import MultipleVmodel from "./sub/MultipleVmodel.vue"
 import Slot from "./sub/Slot.vue";
+import Provide from "./sub/Provide.vue";
 
 const name = ref('');
 const tel = ref('');
@@ -33,6 +34,7 @@ setInterval(() => {
       동적으로 v-slot 이름 바꿔서 위 아래 왔다갔다 하게<span>{{ name }} : {{ detail }}</span>
     </template>
   </Slot>
+  <Provide></Provide>
 </template>
 
 <style scoped>
