@@ -18,7 +18,7 @@ function inputTel({ target: { value }}) {
   emit('update:tel', value);
 }
 
-const nameRef = ref();
+const nameRef = ref(name);
 onMounted(() => {
   nameRef.value.focus();
 });
@@ -26,6 +26,7 @@ onMounted(() => {
 
 <template>
   <p>ref 속성 이용해 focus됨</p>
+  <!-- 위에서 정의한 nameRef 변수와 통합됨  -->
   <input :value="name" @input="inputName" ref="nameRef">
   <p>{{ name }}</p>
   <input :value="tel" @input="inputTel">
