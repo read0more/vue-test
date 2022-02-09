@@ -12,7 +12,9 @@ import Event from "./components/Event.vue";
 import FormInputBinding from "./components/FormInputBinding.vue"
 import ComponentsBasics from "./components/ComponentsBasics.vue"
 import ComponentsInDepth from "./components/ComponentsInDepth.vue"
-import { shallowRef, defineComponent } from "vue";
+import ModalButton from "./components/sub/ModalButton.vue";
+
+import { shallowRef } from "vue";
 
 const activeComponent = shallowRef(HelloWorld);
 function changeActiveComponent(event) {
@@ -23,6 +25,7 @@ function changeActiveComponent(event) {
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
+  <div id="modals"></div>
   <div>
     <button v-on:click="changeActiveComponent">HelloWorld</button>
     <button v-on:click="changeActiveComponent">Introduction</button>
@@ -36,6 +39,8 @@ function changeActiveComponent(event) {
     <button v-on:click="changeActiveComponent">ComponentsBasics</button>
   </div>
   <div>
+    <ModalButton></ModalButton>
+    <ModalButton></ModalButton>
     <button v-on:click="changeActiveComponent">ComponentsInDepth</button>
   </div>
   <span>상기 컴포넌트들 keep-alive로 캐시됨</span>
