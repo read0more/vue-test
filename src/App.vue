@@ -38,7 +38,10 @@ function changeActiveComponent(event) {
   <div>
     <button v-on:click="changeActiveComponent">ComponentsInDepth</button>
   </div>
-  <component v-bind:is="activeComponent"></component>
+  <span>상기 컴포넌트들 keep-alive로 캐시됨</span>
+  <keep-alive>
+    <component v-bind:is="activeComponent"></component>
+  </keep-alive>
 </template>
 
 <style>
