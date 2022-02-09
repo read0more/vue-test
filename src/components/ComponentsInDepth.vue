@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef, defineAsyncComponent } from "vue";
+import { ref, defineAsyncComponent, h } from "vue";
 import MultipleVmodel from "./sub/MultipleVmodel.vue"
 import Slot from "./sub/Slot.vue";
 import Provide from "./sub/Provide.vue";
@@ -14,6 +14,7 @@ const AsyncComp1 = defineAsyncComponent(
       });
     }
 );
+const useH = h('strong', 'vue의 h 이용해 생성');
 
 // const AsyncComp2 = defineAsyncComponent({
 //   loader: () => import("./sub/Async.vue"),
@@ -56,6 +57,7 @@ setInterval(() => {
   <Provide></Provide>
   <p>1.5초 후 비동기로 부르는 component...mount가 후에 출력됨</p>
   <component v-bind:is="AsyncComp1"></component>
+  <useH></useH>
 </template>
 
 <style scoped>
