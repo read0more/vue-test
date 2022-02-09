@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { ref, shallowRef, defineAsyncComponent } from "vue";
 import MultipleVmodel from "./sub/MultipleVmodel.vue"
 import Slot from "./sub/Slot.vue";
 import Provide from "./sub/Provide.vue";
@@ -7,6 +7,25 @@ import Provide from "./sub/Provide.vue";
 const name = ref('');
 const tel = ref('');
 const slotName = ref('todoLi');
+const AsyncComp1 = defineAsyncComponent(
+    () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(import("./sub/Async.vue")), 1500);
+      });
+    }
+);
+
+// const AsyncComp2 = defineAsyncComponent({
+//   loader: () => import("./sub/Async.vue"),
+//   loadingComponent: something,
+//   errorComponent, something,
+//   timeout: something,
+//   suspensible: true,
+//   onError(error, retry, fail, attempts) {
+//
+//   }
+// })
+
 setInterval(() => {
   if (slotName.value === 'todoLi') {
     slotName.value = 'todoDiv';
@@ -24,7 +43,7 @@ setInterval(() => {
       난 헤더
     </template>
     <template #main>
-      난 메인
+
     </template>
     <template #footer>
       난 푸터
@@ -35,6 +54,8 @@ setInterval(() => {
     </template>
   </Slot>
   <Provide></Provide>
+  <p>1.5초 후 비동기로 부르는 component...mount가 후에 출력됨</p>
+  <component v-bind:is="AsyncComp1"></component>
 </template>
 
 <style scoped>
