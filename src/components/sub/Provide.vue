@@ -1,13 +1,14 @@
 <script setup>
-import { ref, provide, computed } from "vue";
+import {ref, provide, computed, readonly} from "vue";
 import NestedInjection1 from "./NestedInjection1.vue";
 
 const input = ref('');
 const todos = ref([]);
-provide('todos', {
-  todos,
+// 객체 전체를 readonly로 해버리면 length computed가 안먹힘
+provide('todos', ({
+  todos: readonly(todos),
   length: computed(() => todos.value.length)
-});
+}));
 </script>
 
 <template>
