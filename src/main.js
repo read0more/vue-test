@@ -1,4 +1,7 @@
 import { createApp } from "vue";
 import App from "./App.vue";
+import customDirectives from "./customDirectives.js";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+customDirectives(app);
+app.mount("#app");

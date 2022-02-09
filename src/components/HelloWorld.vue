@@ -1,15 +1,27 @@
 <script setup>
 import { ref } from "vue";
 
-defineProps({
-  msg: String,
-});
-
+const DIRECTION = {
+  top: 'top',
+  right: 'right',
+  bottom: 'bottom',
+  left: 'left',
+}
+const msg = ref('움직이는 메시지');
 const count = ref(0);
+const pinPadding = ref(0);
+const direction = ref(DIRECTION.top);
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <div>
+    <button @click="direction = $event.target.textContent">{{ DIRECTION.top }}</button>
+    <button @click="direction = $event.target.textContent">{{ DIRECTION.right }}</button>
+    <button @click="direction = $event.target.textContent">{{ DIRECTION.bottom }}</button>
+    <button @click="direction = $event.target.textContent">{{ DIRECTION.left }}</button>
+  </div>
+  <input type="range" min="0" max="500" v-model="pinPadding">
+  <h1 v-pin:[direction]="pinPadding">{{ msg }}</h1>
 
   <p class="global-scope">
     Recommended IDE setup:

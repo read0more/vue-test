@@ -15,7 +15,8 @@ const input4 = ref('');
   <!-- pascal case, kebab case 둘 다 됨 -->
   <!--  <BaseInput></BaseInput> -->
   <!-- input1처럼 굳이 만들지 않아도 input2 처럼 IME고려한 input 양방향 바인딩 적용 가능 -->
-  커스텀이벤트로 작성 <base-input @custom-event="input1 = $event"></base-input>
+  <p>커스텀이벤트로 작성, 커스텀 directive v-focus 적용</p>
+  <base-input @custom-event="input1 = $event" v-focus></base-input>
   <p>{{ input1 }}</p>
   기본 이벤트객체 이용 <input :value="input2" @input="input2 = $event.target.value">
   <p>{{ input2 }}</p>
