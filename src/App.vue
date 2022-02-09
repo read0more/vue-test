@@ -13,7 +13,7 @@ import FormInputBinding from "./components/FormInputBinding.vue"
 import ComponentsBasics from "./components/ComponentsBasics.vue"
 import ComponentsInDepth from "./components/ComponentsInDepth.vue"
 import ModalButton from "./components/sub/ModalButton.vue";
-
+import Reactivity from "./components/Reactivity.vue"
 import { shallowRef } from "vue";
 
 const activeComponent = shallowRef(HelloWorld);
@@ -42,6 +42,7 @@ function changeActiveComponent(event) {
     <ModalButton></ModalButton>
     <ModalButton></ModalButton>
     <button v-on:click="changeActiveComponent">ComponentsInDepth</button>
+    <button v-on:click="changeActiveComponent">Reactivity</button>
   </div>
   <span>상기 컴포넌트들 keep-alive로 캐시됨</span>
   <keep-alive>
