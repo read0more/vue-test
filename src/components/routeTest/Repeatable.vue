@@ -2,8 +2,7 @@
 </script>
 
 <template>
-  this is about
-  <router-view></router-view>
+  {{ $route.params.numbers }}
 </template>
 
 <style scoped>

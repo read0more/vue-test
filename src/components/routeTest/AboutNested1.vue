@@ -2,8 +2,7 @@
 </script>
 
 <template>
-  this is about
-  <router-view></router-view>
+  this is about nested1
 </template>
 
 <style scoped>

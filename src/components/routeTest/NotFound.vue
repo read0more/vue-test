@@ -2,8 +2,7 @@
 </script>
 
 <template>
-  this is about
-  <router-view></router-view>
+  NOT FOUND : {{ $route.params.pathMatch[0] }} page
 </template>
 
 <style scoped>

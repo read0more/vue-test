@@ -1,9 +1,13 @@
 <script setup>
+
+</script>
+
+<script>
+
 </script>
 
 <template>
-  this is about
-  <router-view></router-view>
+  Hi {{ $route.params.name }}
 </template>
 
 <style scoped>

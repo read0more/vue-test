@@ -1,9 +1,9 @@
 <script setup>
+
 </script>
 
 <template>
-  this is about
-  <router-view></router-view>
+  this is about nested2
 </template>
 
 <style scoped>

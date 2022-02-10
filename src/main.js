@@ -4,12 +4,9 @@ import customDirectives from "./customDirectives.js";
 import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
 import routes from "./routes.js";
 
-// const routes = [
-//     { path: '/', name: 'Home', component: Home },
-// ]
-
+// todo: routes에 넣은 컴포넌트들 lazy 되는지, 어떻게 적용하는지
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 });
 
