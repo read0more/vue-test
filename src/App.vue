@@ -15,9 +15,10 @@ import ComponentsInDepth from "./components/ComponentsInDepth.vue"
 import ModalButton from "./components/sub/ModalButton.vue";
 import Reactivity from "./components/Reactivity.vue"
 import RouteTest from "./components/RouteTest.vue"
-import { shallowRef } from "vue";
+import { shallowRef, ref } from "vue";
 
 const activeComponent = shallowRef(HelloWorld);
+const show = ref(false);
 function changeActiveComponent(event) {
   activeComponent.value = eval(event.target.textContent);
 }
@@ -25,29 +26,32 @@ function changeActiveComponent(event) {
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <div id="modals"></div>
-  <div>
-    <button v-on:click="changeActiveComponent">HelloWorld</button>
-    <button v-on:click="changeActiveComponent">Introduction</button>
-    <button v-on:click="changeActiveComponent">TemplateSyntax</button>
-    <button v-on:click="changeActiveComponent">ComputedAndWatch</button>
-    <button v-on:click="changeActiveComponent">StyleClass</button>
-    <button v-on:click="changeActiveComponent">IfAndShow</button>
-    <button v-on:click="changeActiveComponent">ListRendering</button>
-    <button v-on:click="changeActiveComponent">Event</button>
-    <button v-on:click="changeActiveComponent">FormInputBinding</button>
-    <button v-on:click="changeActiveComponent">ComponentsBasics</button>
+  <button @click="show = !show">{{ show ? 'route 빼고 숨기기' : '나머지도 보이게'}}</button>
+  <div v-show="show">
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <div id="modals"></div>
+    <div>
+      <button v-on:click="changeActiveComponent">HelloWorld</button>
+      <button v-on:click="changeActiveComponent">Introduction</button>
+      <button v-on:click="changeActiveComponent">TemplateSyntax</button>
+      <button v-on:click="changeActiveComponent">ComputedAndWatch</button>
+      <button v-on:click="changeActiveComponent">StyleClass</button>
+      <button v-on:click="changeActiveComponent">IfAndShow</button>
+      <button v-on:click="changeActiveComponent">ListRendering</button>
+      <button v-on:click="changeActiveComponent">Event</button>
+      <button v-on:click="changeActiveComponent">FormInputBinding</button>
+      <button v-on:click="changeActiveComponent">ComponentsBasics</button>
+    </div>
+    <div>
+      <ModalButton></ModalButton>
+      <button v-on:click="changeActiveComponent">ComponentsInDepth</button>
+      <button v-on:click="changeActiveComponent">Reactivity</button>
+    </div>
+    <span>상기 컴포넌트들 keep-alive로 캐시됨</span>
+    <keep-alive>
+      <component v-bind:is="activeComponent"></component>
+    </keep-alive>
   </div>
-  <div>
-    <ModalButton></ModalButton>
-    <button v-on:click="changeActiveComponent">ComponentsInDepth</button>
-    <button v-on:click="changeActiveComponent">Reactivity</button>
-  </div>
-  <span>상기 컴포넌트들 keep-alive로 캐시됨</span>
-  <keep-alive>
-    <component v-bind:is="activeComponent"></component>
-  </keep-alive>
   <fieldset>
     <strong>vue route된 영역</strong>
     <br />
