@@ -15,7 +15,17 @@ import ComponentsInDepth from "./components/ComponentsInDepth.vue"
 import ModalButton from "./components/sub/ModalButton.vue";
 import Reactivity from "./components/Reactivity.vue"
 import RouteTest from "./components/RouteTest.vue"
+import Layout from "@/components/vuexTest/Layout.vue";
+import Lists from "@/components/vuexTest/Lists.vue";
 import { shallowRef, ref } from "vue";
+
+const headerInput = ref();
+const headerInputLists = ref([1,2,3]);
+const headerInputListsFn = () => headerInputLists;
+function onHeaderSubmit(event) {
+  event.preventDefault();
+  headerInputLists.value.push(headerInput.value);
+}
 
 const activeComponent = shallowRef(HelloWorld);
 const show = ref(false);
@@ -57,6 +67,18 @@ function changeActiveComponent(event) {
     <br />
     <RouteTest></RouteTest>
   </fieldset>
+  <section :style="{ border: '1px solid'}">
+    <Layout>
+      <template #header>
+        <form @submit="onHeaderSubmit">
+          <input :value="headerInput" @input="headerInput = $event.target.value">
+        </form>
+      </template>
+      <template #main>
+        <Lists :lists="headerInputListsFn"></Lists>
+      </template>
+    </Layout>
+  </section>
 </template>
 
 <style>
