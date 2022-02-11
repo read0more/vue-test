@@ -18,13 +18,16 @@ import RouteTest from "./components/RouteTest.vue"
 import Layout from "@/components/vuexTest/Layout.vue";
 import Lists from "@/components/vuexTest/Lists.vue";
 import { shallowRef, ref } from "vue";
+import { useStore } from "vuex";
 
+const store = useStore();
 const headerInput = ref();
-const headerInputLists = ref([1,2,3]);
+const headerInputLists = ref(['1','2','3']);
 const headerInputListsFn = () => headerInputLists;
 function onHeaderSubmit(event) {
   event.preventDefault();
-  headerInputLists.value.push(headerInput.value);
+  store.commit('addList', headerInput.value);
+  headerInputLists.value.push();
 }
 
 const activeComponent = shallowRef(HelloWorld);
@@ -32,7 +35,10 @@ const show = ref(false);
 function changeActiveComponent(event) {
   activeComponent.value = eval(event.target.textContent);
 }
-
+store.dispatch('addList', 'one');
+store.dispatch('addList', 'two');
+store.dispatch('addList', 'three');
+store.dispatch('addList', 'four');
 </script>
 
 <template>
@@ -75,7 +81,7 @@ function changeActiveComponent(event) {
         </form>
       </template>
       <template #main>
-        <Lists :lists="headerInputListsFn"></Lists>
+        <Lists></Lists>
       </template>
     </Layout>
   </section>
