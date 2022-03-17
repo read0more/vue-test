@@ -39,9 +39,27 @@ store.dispatch('addList', 'one');
 store.dispatch('addList', 'two');
 store.dispatch('addList', 'three');
 store.dispatch('addList', 'four');
+const arr = ref([]);
+arr.value.push({ name: 'rec', id: 1});
+arr.value.push({name: 'tiger', id: 2});
+arr.value.push({name: 'nia', id: 3});
+function add() {
+  arr.value = [{ name: 'qqq', id: 4}, ...arr.value];
+}
+function remove() {
+  arr.value = arr.value.filter((e) => e.name !== 'tiger');
+}
 </script>
 
 <template>
+  <input type="button" value="추가" @click="add" />
+  <input type="button" value="삭제" @click="remove" />
+  <ul>
+    <strong>key를 배열의 index로 잡았기 때문에 추가나 삭제시 이상이 생긴다. 대신 value.id를 쓰면 정상화</strong>
+    <li v-for="(value, index) in arr" :key="index">
+      {{value.name}}: <input type="text" />
+    </li>
+  </ul>
   <button @click="show = !show">{{ show ? 'route 빼고 숨기기' : '나머지도 보이게'}}</button>
   <div v-show="show">
     <img alt="Vue logo" src="./assets/logo.png" />
